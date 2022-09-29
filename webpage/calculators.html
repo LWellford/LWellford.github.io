@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <title>Calculators</title>
+  <style>
+
+  h1 {
+    color: Maroon;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 300%;
+  }
+
+  p {
+    color: Maroon;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 100%;
+  }
+
+  .button {
+    background-color: White;
+    color: Maroon;
+    font-family: Georgia, serif;
+    display: inline-block;
+    text-align: center;
+    width: 150px;
+    font-size: 20px;
+    border: none;
+    padding: 20px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: Maroon;
+    color: White;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button1 {
+    margin-right: 15px;
+  }
+
+  .button2 {
+    margin-right: 15px;
+  }
+
+  .button3 {
+    margin-right: 15px;
+  }
+
+  .list {
+    color: Maroon;
+    text-align: center;
+    list-style-position: inside;
+    font-family: Georgia, serif;
+    font-size: 150%;
+    box-sizing: border-box;
+    border: solid Maroon 10px;
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    line-height: 200%;
+  }
+
+  .otherCalc {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: solid Maroon 10px;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  </style>
+  <body style="background-color:MistyRose;" >
+    <h1>Age and BMI Calculators</h1>
+    <div class="container">
+      <button class="button button1" onclick="document.location='./index.html'">Home</button>
+      <button class="button button2" onclick="document.location='./aboutMe.html'">About Me</button>
+      <button class="button button3" onclick="document.location='./myFamily.html'">My Family</button>
+      <button class="button button4" onclick="document.location.reload();">Calculators</button>
+    </div>
+    <ul class="list">
+      <li><h2>Age Calculator</h2></li>
+      <li><strong>Current Date: </strong><input type="date" id="currentDate" value="2020-11-09"></li>
+      <li><strong>Date of Birth: </strong><input type="date" id="dateOfBirth" value="2020-11-09"></li>
+      <li><button onclick="myFunction()">Calculate Age</button></li>
+      <li><strong>Age: </strong><span id="ageValue"></span></li>
+    </ul>
+    <ul class="list">
+      <li><h2>BMI Calculator</h2></li>
+      <li><strong>Height: </strong><input type="number" id="feet" name="feet" min="4" max="7">
+        feet <input type="number" id="inches" name="inches" min="0" max="12"> inches</li>
+      <li><strong>Weight: </strong><input type="number" id="weight" name="weight" min="50" max="600"> pounds</li>
+      <li><button type="button" onclick="calculatorBMI()">Calculate BMI</button></li>
+      <li><strong>BMI: </strong><span id="valuebmi"></span></li>
+    </ul>
+
+
+    <script>
+    function myFunction() {
+
+      var currDate = document.getElementById("currentDate").value;
+
+      var currYear = currDate.substring(0,4);
+      var currYearInt = parseInt(currYear);
+
+      var currMonth = currDate.substring(5,7);
+      var currMonthInt = parseInt(currMonth);
+
+      var currDay = currDate.substring(8,10);
+      var currDayInt = parseInt(currDay);
+
+      var birthDate = document.getElementById("dateOfBirth").value;
+
+      var birthYear = birthDate.substring(0,4);
+      var birthYearInt = parseInt(birthYear);
+
+      var birthMonth = birthDate.substring(5,7);
+      var birthMonthInt = parseInt(birthMonth);
+
+      var birthDay = birthDate.substring(8,10);
+      var birthDayInt = parseInt(birthDay);
+
+      var currentAge = currYear - birthYear;
+
+      if (currentAge < 0) {
+        document.getElementById("ageValue").innerHTML = "Not born yet";
+      }
+      else if (currentAge == 0) {
+        if (birthMonth > currMonth) {
+          document.getElementById("ageValue").innerHTML = "Not born yet";
+        }
+        else if (birthMonth == currMonth) {
+          if (birthDay > currDay) {
+            document.getElementById("ageValue").innerHTML = "Not born yet";
+          }
+          else {
+            document.getElementById("ageValue").innerHTML = "0";
+          }
+        }
+        else {
+          document.getElementById("ageValue").innerHTML = "0";
+        }
+      }
+      else {
+        if (birthMonth > currMonth) {
+          currentAge -= 1;
+        }
+        if (birthMonth == currMonth) {
+          if (birthDay > currDay) {
+            currentAge -= 1;
+          }
+        }
+        document.getElementById("ageValue").innerHTML = currentAge;
+      }
+    }
+
+    function calculatorBMI() {
+      var heightFeet = document.getElementById("feet").value;
+      var heightFeetInt = parseInt(heightFeet);
+      var extraInches = document.getElementById("inches").value;
+      var extraInchesInt = parseInt(extraInches);
+      var heightInInches = (heightFeetInt * 12) + extraInchesInt;
+      var heightInMeters = heightInInches * 0.0254;
+      var metersSquared = heightInMeters * heightInMeters;
+
+      var pounds = document.getElementById("weight").value;
+      var poundsInt = parseInt(pounds);
+      var weightInKg = pounds * 0.45359237;
+
+      var BMIval = weightInKg / metersSquared;
+
+      if (BMIval < 18.5) {
+        document.getElementById("valuebmi").innerHTML = (BMIval).toFixed(2) + " (Underweight)";
+      }
+
+      if ((BMIval >= 18.5) && (BMIval < 25)) {
+        document.getElementById("valuebmi").innerHTML = (BMIval).toFixed(2) + " (Normal weight)";
+      }
+
+      if (BMIval >= 25) {
+        document.getElementById("valuebmi").innerHTML = (BMIval).toFixed(2) + " (Overweight)";
+      }
+    }
+
+    </script>
+
+  </body>
+</html>

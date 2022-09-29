@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <title>About Me</title>
+  <style>
+
+  h1 {
+    color: Maroon;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 300%;
+  }
+
+  p {
+    color: Maroon;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 100%;
+  }
+
+  .button {
+    background-color: White;
+    color: Maroon;
+    font-family: Georgia, serif;
+    display: inline-block;
+    text-align: center;
+    width: 150px;
+    font-size: 20px;
+    border: none;
+    padding: 20px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: Maroon;
+    color: White;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button1 {
+    margin-right: 15px;
+  }
+
+  .button2 {
+    margin-right: 15px;
+  }
+
+  .button3 {
+    margin-right: 15px;
+  }
+
+  .list {
+    color: Maroon;
+    text-align: center;
+    list-style-position: inside;
+    font-family: Georgia, serif;
+    font-size: 150%;
+    box-sizing: border-box;
+    border: solid Maroon 10px;
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  </style>
+  <body style="background-color:MistyRose;" >
+    <h1>About Me</h1>
+    <div class="container">
+      <button class="button button1" onclick="document.location='./index.html'">Home</button>
+      <button class="button button2" onclick="document.location.reload();">About Me</button>
+      <button class="button button3" onclick="document.location='./myFamily.html'">My Family</button>
+      <button class="button button4" onclick="document.location='./calculators.html'">Calculators</button>
+    </div>
+    <ul class="list">
+      <li><strong>Hometown:</strong> San Antonio, Texas</li>
+      <li><strong>Age:</strong> 23</li>
+      <li><strong>Born in:</strong> High Point, North Carolina</li>
+      <li><strong>Birthday:</strong> August 2, 1999</li>
+      <li><strong>Education:</strong> Graduated from Texas A&M University</li>
+      <li><strong>Major:</strong> Applied Math</li>
+      <li><strong>Minor:</strong> Computer Science</li>
+    </ul>
+  </body>
+</html>
